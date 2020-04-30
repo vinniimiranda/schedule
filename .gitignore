@@ -3,5 +3,5 @@ dist
 src/__tests__/coverage
 database.sqlite
 .env
-.env.tes
+.env.test
 server
