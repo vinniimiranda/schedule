@@ -28,3 +28,4 @@ jobs:
       run: yarn test
     env:
       DB_DIALECT: sqlite
+      API_SECRET: runtest
