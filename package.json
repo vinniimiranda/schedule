@@ -1,0 +1,62 @@
+{
+  "name": "node-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run tsc",
+    "dev": "nodemon -x ts-node src/index.ts",
+    "start": "ts-node src/index.ts",
+    "prod": "yarn run build && node dist/index.js",
+    "tsc:watch": "yarn run tsc --watch",
+    "pretest": "cross-env NODE_ENV=test yarn db:migrate",
+    "test": "jest",
+    "posttest": "cross-env NODE_ENV=test yarn db:migrate:undo",
+    "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "db:migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo:all",
+    "db:seed": "./node_modules/.bin/sequelize db:seed:all",
+    "db:seed:undo": "./node_modules/.bin/sequelize db:seed:undo:all",
+    "db:up": "docker-compose up --build -d"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn jest",
+      "pre-push": "yarn jest"
+    }
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validation": "^1.0.3",
+    "factory-girl": "^5.0.4",
+    "faker": "^4.1.0",
+    "jest": "^24.9.0",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.1",
+    "pg": "^7.14.0",
+    "reflect-metadata": "^0.1.10",
+    "sequelize": "^4.42.1",
+    "sequelize-typescript": "^0.6.8-beta.0",
+    "sqlite": "^3.0.3",
+    "supertest": "^4.0.2",
+    "ts-config": "^20.10.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.2",
+    "@types/faker": "^4.1.8",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^8.0.29",
+    "@types/sequelize": "^4.28.8",
+    "@types/supertest": "^2.0.8",
+    "cross-env": "^6.0.3",
+    "husky": "^3.1.0",
+    "sequelize-cli": "^5.5.1",
+    "ts-node": "^8.5.4"
+  }
+}

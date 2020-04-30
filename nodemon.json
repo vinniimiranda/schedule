@@ -1,0 +1,7 @@
+{
+  "watch": ["src", "."],
+  "ignore": ["src/__tests__"],
+  "exec": "npm start",
+  "ext": "ts",
+  "events": {}
+}
